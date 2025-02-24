@@ -21,7 +21,8 @@ void numberGuess() {
 
     int? guess = int.tryParse(userGuess);
 if (guess == null ){
-  
+
+
 }
 
   if (userGuess.toLowerCase() == "exit") {
@@ -57,7 +58,7 @@ if (guess == null ){
       totalGuesses = 0;
       print("Lets go");
     }else {
-      print("Algjör hæna...");
+      print("Takk fyrir að spila leikinn minn...");
       break;
     }
 
