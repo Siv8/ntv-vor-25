@@ -86,7 +86,7 @@ void main(List<String> arguments) {
 
   // svar við spurningu 3
   String NureseryRyhme = "Eena, meena, mina, mo, Catch a mouse by the toe; If he squeals let him go, Eeena, meena, mina, mo.";
-  String modifieRyhme = NureseryRyhme.replaceAll(" ", "replace");
+  String modifieRyhme = NureseryRyhme.replaceAll(" ","");
 
   print(modifieRyhme);
 
