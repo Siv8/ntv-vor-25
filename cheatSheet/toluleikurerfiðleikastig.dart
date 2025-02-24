@@ -31,11 +31,12 @@ void main(List<String> args) {
   }
 
 
-  if (maxAttempts == -1) {
-    print("Þú valdir ${(difficulty ?? 'easy').toUpperCase()}! Þú hefur aðeins $maxAttempts Tilraunir, gangi þér vel!");
-  } else {
-    print("Þú valdir ${difficulty.toUpperCase()}! Þú hefur aðeins $maxAttempts Tilraunir, gangi þér vel!");
-  }
+ if (maxAttempts == -1){
+   print("Þú valdir $difficulty Þú hefur óendanlegar tilraunir");
+
+ } else if (difficulty != null){
+   print("Þú valdir $difficulty ! Þú hefur aðeins $maxAttempts Tilraunir, gangi þér vel!");
+ }
 
   numberGuess(maxAttempts);
 }
@@ -64,7 +65,6 @@ void numberGuess(int maxAttempts) {
       print("Veldu tölu frá 1 til 100.");
       continue;
     }
-
     totalGuesses++;
 
     if (guess == randomNum) {
@@ -73,7 +73,7 @@ void numberGuess(int maxAttempts) {
       stdout.write("Viltu spila aftur? (J/N): ");
       String? val = stdin.readLineSync()?.toLowerCase();
       if (val == "exit") {
-        print("Bless í bili");
+        print("Takk samt fyrir að spila leikinn minn");
       } else if (val == "j") {
         numberGuess(maxAttempts);
       } else {
@@ -82,14 +82,13 @@ void numberGuess(int maxAttempts) {
       break;
     }
 
-    // Check if maximum attempts reached (for HARD/MED)
     if (maxAttempts != -1 && totalGuesses >= maxAttempts) {
-      print("Þú hefur notað $totalGuesses reyndir, ekkert fleira eftir.");
+      print("Þú hefur notað $totalGuesses tilraunir, því miður áttu ekki fleiri eftir.");
       print("Rétta svarið var: $randomNum");
       stdout.write("Viltu spila aftur? (J/N): ");
       String? val = stdin.readLineSync()?.toLowerCase();
       if (val == "exit") {
-        print("Bless í bili");
+        print("Takk samt fyrir að spila leikinn minn");
       } else if (val == "j") {
         numberGuess(maxAttempts);
       } else {
@@ -98,7 +97,6 @@ void numberGuess(int maxAttempts) {
       break;
     }
 
-    // Provide hints if the guess was incorrect and attempts remain.
     if (guess > randomNum) {
       print("of há...👆");
     } else {
