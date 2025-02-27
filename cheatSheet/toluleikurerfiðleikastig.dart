@@ -2,7 +2,11 @@ import 'dart:io';
 import 'dart:math';
 
 void main(List<String> args) {
+  spilaLeik();
+}
+void spilaLeik(){
   print("Hver er talan, leikur við tölvuna.");
+  print("þú velur tölur frá 1-100");
   print("Skrifaðu 'exit' ef þú vilt hætta.");
   print("Veldu erfiðleikastig:");
   print("HARD - aðeins 3 Tilraunir");
@@ -75,22 +79,24 @@ void numberGuess(int maxAttempts) {
       if (val == "exit") {
         print("Takk samt fyrir að spila leikinn minn");
       } else if (val == "j") {
-        numberGuess(maxAttempts);
+        spilaLeik();
       } else {
+        print ("þú skrifaðir ekki j eða n þannig idk");
         print("Takk samt fyrir að spila leikinn minn");
       }
       break;
     }
 
     if (maxAttempts != -1 && totalGuesses >= maxAttempts) {
-      print("Þú hefur notað $totalGuesses tilraunir, því miður áttu ekki fleiri eftir.");
+      print(
+          "Þú hefur notað $totalGuesses tilraunir, því miður áttu ekki fleiri eftir.");
       print("Rétta svarið var: $randomNum");
       stdout.write("Viltu spila aftur? (J/N): ");
       String? val = stdin.readLineSync()?.toLowerCase();
       if (val == "exit") {
         print("Takk samt fyrir að spila leikinn minn");
       } else if (val == "j") {
-        numberGuess(maxAttempts);
+        spilaLeik();
       } else {
         print("Takk samt fyrir að spila leikinn minn");
       }
@@ -98,9 +104,9 @@ void numberGuess(int maxAttempts) {
     }
 
     if (guess > randomNum) {
-      print("of há...👆");
+      print("of há...👇");
     } else {
-      print("of lág..👇");
+      print("of lág..👆");
     }
   }
 }
