@@ -27,19 +27,30 @@ class Player {
     score += total;
     return total;
   }
+
+
+}
+String getFormattedName(String label, String defaultName) {
+  stdout.write("Enter $label name: ");
+  String? input = stdin.readLineSync();
+  if (input == null || input
+      .trim()
+      .isEmpty) return defaultName;
+
+  input = input.trim();
+  return input[0].toUpperCase() + input.substring(1).toLowerCase();
 }
 
 void DiceGame({int rounds = 3}) {
-  print("Type in names for Player 1 and Player 2");
-  stdout.write("Enter Player 1 name: ");
-  String? player1Name = stdin.readLineSync();
+  print("The Dice Game ");
 
-  stdout.write("Enter Player 2 name: ");
-  String? player2Name = stdin.readLineSync();
+  String player1Name = getFormattedName("Player 1", "Player 1");
+  String player2Name = getFormattedName("Player 2", "Player 2");
+
 
   Player player1 = Player(player1Name ?? "Player 1");
   Player player2 = Player(player2Name ?? "Player 2");
-
+  print("\n${player1.name} challenges ${player2.name} in a game of Dice!\n");
   var dicePlayer1 = [Dice(), Dice()];
   var dicePlayer2 = [Dice(), Dice()];
 
