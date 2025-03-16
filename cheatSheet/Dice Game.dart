@@ -79,6 +79,18 @@ void DiceGame({int rounds = 3}) {
   } else {
     print(' It\'s a tie!');
   }
+  playAgain();
+}
+
+void playAgain() {
+  stdout.write('\nWould you like to play again? (yes/no): ');
+  String? response = stdin.readLineSync();
+
+  if (response != null && (response.toLowerCase() == 'yes' || response.toLowerCase() == 'y')) {
+    DiceGame();
+  } else {
+    print("\n Thanks for playing!");
+  }
 }
 
 void main() {
