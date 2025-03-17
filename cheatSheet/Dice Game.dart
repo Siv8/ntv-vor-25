@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:convert';
 
 
 class Dice {
@@ -32,13 +33,14 @@ class Player {
 }
 String getFormattedName(String label, String defaultName) {
   stdout.write("Enter $label name: ");
-  String? input = stdin.readLineSync();
+  String? input = stdin.readLineSync(encoding: utf8);
   if (input == null || input
       .trim()
       .isEmpty) return defaultName;
 
   input = input.trim();
-  return input[0].toUpperCase() + input.substring(1).toLowerCase();
+  String formatted = input[0].toUpperCase() + input.substring(1).toLowerCase();
+  return " $formatted";
 }
 
 void DiceGame({int rounds = 3}) {
@@ -66,6 +68,11 @@ void DiceGame({int rounds = 3}) {
 
     var roll2 = player2.rollDice(dicePlayer2);
     print('${player2.name} rolled a total of $roll2 | Total score: ${player2.score}\n');
+
+    if (round != rounds) {
+      stdout.write('\nPress Enter to start the next round...');
+      stdin.readLineSync(encoding: utf8);
+      print(""); }
   }
 
   print(' Final Results ');
@@ -84,7 +91,7 @@ void DiceGame({int rounds = 3}) {
 
 void playAgain() {
   stdout.write('\nWould you like to play again? (yes/no): ');
-  String? response = stdin.readLineSync();
+  String? response = stdin.readLineSync(encoding:utf8);
 
   if (response != null && (response.toLowerCase() == 'yes' || response.toLowerCase() == 'y')) {
     DiceGame();
